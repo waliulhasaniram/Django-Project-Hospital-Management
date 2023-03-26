@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+{% block title %} Profile {% endblock title %}
+
+{% block body %} 
+
+    {% if user.is_authenticated %}
+    {% load static %}
+    <link rel="stylesheet" href="/static/index.css">
+    <div class="profile_box">
+     <h1>Welcome, to your profile <b>{{request.user}}</b></h1>
+     <h1>Username :- {{request.user}}</h1>
+     <h1>First name :- {{request.user.first_name}}</h1>
+     <h1>Last name :- {{request.user.last_name}}</h1>
+     <h1>Email :- {{request.user.email}}</h1>
+    </div>
+
+
+   
+    <form class="row g-3 mx-5 my-5" method="POST" action="{% url 'update_profile' %}">
+        {% csrf_token %}
+          <h1>Update you profile info here.</h1>
+          <p>avoid space in the username, firstname, lastname </p> 
+          <div class="col-md-4">
+            <label for="validationDefault01" class="form-label">username</label>
+            <input type="text" class="form-control" name="username" id="username" value="{{ request.user.username }}" required>
+          </div>
+          <div class="col-md-4">
+            <label for="validationDefault01" class="form-label">First name</label>
+            <input type="text" class="form-control" name="first_name" id="firstname" value="{{ request.user.first_name }}" required>
+          </div>
+          <div class="col-md-4">
+            <label for="validationDefault01" class="form-label">Laset name</label>
+            <input type="text" class="form-control" name="last_name" id="lastname" value="{{ request.user.last_name }}" required>
+          </div>
+          <div class="col-md-4">
+            <label for="validationDefaultUsername" class="form-label">Email</label>
+            <div class="input-group">
+              <span class="input-group-text" id="inputGroupPrepend2">@</span>
+              <input type="email" class="form-control" name="email" id="email" value="{{ request.user.email }}"  aria-describedby="inputGroupPrepend2" required>
+            </div>
+          </div>
+
+          <div class="col-12">
+            <button class="btn btn-primary" id="update_profile"  type="submit">Update Info</button>
+          </div>
+        </form>
+      
+
+    {% endif %}
+
+{% endblock body %}
