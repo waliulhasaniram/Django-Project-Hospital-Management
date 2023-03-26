@@ -6,3 +6,4 @@ their information from profile page.
 
 Admin can see everything from admin panel.
 
+users can also comment from another page and the informations will be saved in backend.
