@@ -11,3 +11,4 @@ users can also comment from another page and the informations will be saved in b
 The  main objective of this project to manage the records of patients , doctors and appointments.
 
 This CRUD project is made for practicing Django with real world problems.
+
